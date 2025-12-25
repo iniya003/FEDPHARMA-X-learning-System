@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FedPharma-X: Federated Drug Discovery Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://3Dmol.csb.pitt.edu/build/3Dmol-min.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "recharts": "https://aistudiocdn.com/recharts@^3.3.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^0.14.0"
+  }
+}
+</script>
+<style>
+  @keyframes travel-to-center {
+    from { offset-distance: 0%; opacity: 1; }
+    to { offset-distance: 100%; opacity: 0; }
+  }
+  @keyframes travel-from-center {
+    from { offset-distance: 100%; opacity: 0;}
+    50% { opacity: 1; }
+    to { offset-distance: 0%; opacity: 1; }
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  }
+  @keyframes reveal {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes progress-stripes {
+    from { background-position: 40px 0; }
+    to { background-position: 0 0; }
+  }
+  @keyframes slide-in-right {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
+  @keyframes slide-out-right {
+    from { transform: translateX(0); }
+    to { transform: translateX(100%); }
+  }
+
+  .animate-reveal {
+    animation: reveal 0.7s ease-out forwards;
+  }
+  .animate-packet-to-center {
+    animation: travel-to-center 1.5s ease-in-out forwards;
+    animation-delay: 0.1s;
+  }
+  .animate-packet-from-center {
+    animation: travel-from-center 1.5s ease-in-out forwards;
+    animation-delay: 1.6s;
+  }
+  .animate-pulse {
+    animation: pulse 1s ease-in-out;
+    animation-delay: 1.5s;
+  }
+  .progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+    background-size: 40px 40px;
+    animation: progress-stripes 2s linear infinite;
+  }
+
+  /* Checkmark Animation */
+  .checkmark-svg {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: block;
+    stroke-width: 3;
+    stroke: #16a34a;
+    stroke-miterlimit: 10;
+    margin: 0 auto;
+    box-shadow: inset 0px 0px 0px #16a34a;
+    animation: fill-success .4s ease-in-out .4s forwards, scale-success .3s ease-in-out .9s both;
+  }
+  .checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    stroke: #16a34a;
+    fill: none;
+    animation: stroke-success .6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  }
+  .checkmark-check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke-success .3s cubic-bezier(0.65, 0, 0.45, 1) .8s forwards;
+  }
+  @keyframes stroke-success {
+    100% { stroke-dashoffset: 0; }
+  }
+  @keyframes scale-success {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
+  }
+  @keyframes fill-success {
+    100% { box-shadow: inset 0px 0px 0px 32px #dcfce7; }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out 1.2s forwards;
+    opacity: 0;
+  }
+</style>
+</head>
+  <body class="bg-gray-50">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

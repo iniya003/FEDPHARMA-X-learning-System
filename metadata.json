@@ -1,0 +1,7 @@
+{
+  "name": "Copy of FedPharma-X: Federated Drug Discovery Portal",
+  "description": "An interactive dashboard for federated drug discovery, allowing hospitals, labs, and pharmacies to collaboratively train a global AI model while ensuring data privacy. The platform visualizes real-time training, optimizer performance (FedAdagrad/FedAdam), and global model metrics.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
